@@ -1,0 +1,20 @@
+.phone_icon {
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+    width: 80px;
+    height: 80px;
+    cursor: pointer;
+    z-index: 1;
+    animation: scale-down-animation 0.5s infinite alternate;
+}
+
+@keyframes scale-down-animation {
+    from {
+        transform: scale(1) rotate(-10deg);
+    }
+
+    to {
+        transform: scale(1.2) rotate(10deg);
+    }
+}
