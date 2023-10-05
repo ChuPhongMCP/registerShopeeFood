@@ -1,5 +1,5 @@
 import React, { memo, useCallback, useState, useRef } from "react";
-// import ReCAPTCHA from "react-google-recaptcha";
+import ReCAPTCHA from "react-google-recaptcha";
 import emailjs from "@emailjs/browser";
 import { Link } from "react-router-dom";
 
@@ -18,12 +18,24 @@ function Contents(props) {
 
   const [isHaveReponsive, setIsHaveReponsive] = useState(true);
 
-  // const [isValidated, setIsValidated] = useState(false);
+  const [isValidated, setIsValidated] = useState(false);
+
+  const handleKeyDown = (event) => {
+    if (event.key === 'Enter') {
+      event.preventDefault(); // Ngăn hành vi mặc định của phím Enter
+    }
+  };
 
   const form = useRef();
 
   const sendEmail = async (e) => {
     e.preventDefault();
+
+    if (!isValidated) {
+      return (
+        alert("Bạn chưa xác thực reCAPTCHA")
+      );
+    }
 
     setIsHaveReponsive(false);
 
@@ -39,12 +51,12 @@ function Contents(props) {
           console.log(result.text);
 
           console.log("message sent");
-
-          window.location.reload();
-
+          
           alert(
             "Đăng ký thành công! Vui lòng chờ bộ phận kinh doanh liên lạc lại. Cảm ơn bạn!"
-          );
+            );
+            
+            window.location.reload();
 
           setIsHaveReponsive(true);
         },
@@ -58,13 +70,13 @@ function Contents(props) {
     window.scrollTo(0, 0);
   };
 
-  // function onChangeCaptcha(value) {
-  //   if (value !== null) {
-  //     setIsValidated(true);
-  //   } else {
-  //     setIsValidated(false);
-  //   }
-  // }
+  function onChangeCaptcha(value) {
+    if (value !== null) {
+      setIsValidated(true);
+    } else {
+      setIsValidated(false);
+    }
+  }
 
   const toggle_frame_question = useCallback(
     (event, index) => {
@@ -77,7 +89,7 @@ function Contents(props) {
   );
 
   return (
-    <>
+    <div onKeyDown={handleKeyDown}>
       {!isHaveReponsive && (
         <div className="loadingContainer">
           <div className="loadingIcon"></div>
@@ -118,6 +130,7 @@ function Contents(props) {
                       id="1"
                       placeholder="Tên nhà hàng/quán ăn"
                       required
+                      autoComplete="off"
                     />
                   </div>
 
@@ -129,6 +142,7 @@ function Contents(props) {
                       id="1"
                       placeholder="Địa chỉ"
                       required
+                      autoComplete="off"
                     />
                   </div>
 
@@ -139,6 +153,7 @@ function Contents(props) {
                       className="form-control"
                       id="1"
                       placeholder="Định vị quán (nếu có)"
+                      autoComplete="off"
                     />
                   </div>
 
@@ -150,6 +165,7 @@ function Contents(props) {
                       id="1"
                       placeholder="Thời gian hoạt động của quán"
                       required
+                      autoComplete="off"
                     />
                   </div>
 
@@ -161,6 +177,7 @@ function Contents(props) {
                       id="1"
                       placeholder="Số điện thoại"
                       required
+                      autoComplete="off"
                     />
                   </div>
 
@@ -172,6 +189,7 @@ function Contents(props) {
                       id="1"
                       placeholder="Email"
                       required
+                      autoComplete="off"
                     />
                   </div>
 
@@ -183,6 +201,7 @@ function Contents(props) {
                       id="1"
                       placeholder="Số tài khoản"
                       required
+                      autoComplete="off"
                     />
                   </div>
 
@@ -194,6 +213,7 @@ function Contents(props) {
                       id="1"
                       placeholder="Ngân hàng"
                       required
+                      autoComplete="off"
                     />
                   </div>
 
@@ -205,6 +225,7 @@ function Contents(props) {
                       id="1"
                       placeholder="Chủ tài khoản"
                       required
+                      autoComplete="off"
                     />
                   </div>
 
@@ -216,6 +237,7 @@ function Contents(props) {
                       id="1"
                       placeholder="Số CMND/CCCD"
                       required
+                      autoComplete="off"
                     />
                   </div>
 
@@ -227,6 +249,7 @@ function Contents(props) {
                       id="1"
                       placeholder="Ngày cấp"
                       required
+                      autoComplete="off"
                     />
                   </div>
 
@@ -238,10 +261,11 @@ function Contents(props) {
                       id="1"
                       placeholder="Nơi cấp"
                       required
+                      autoComplete="off"
                     />
                   </div>
 
-                  {/* <div
+                  <div
                   className="cover_captcha"
                   style={{ transform: "scale(0.85)", transformOrigin: "0 0" }}
                 >
@@ -249,10 +273,10 @@ function Contents(props) {
                     sitekey={process.env.REACT_APP_SITE_KEY}
                     onChange={onChangeCaptcha}
                   />
-                </div> */}
+                </div>
 
                   <div className="cover_btn_dangky_form">
-                    {/* <button
+                    <button
                     type="submit"
                     className={`btn btn-danger ${
                       isValidated
@@ -261,13 +285,13 @@ function Contents(props) {
                     }`}
                   >
                     ĐĂNG KÝ
-                  </button> */}
-                    <button
+                  </button>
+                    {/* <button
                       type="submit"
                       className="btn btn-danger btn_dangky_form"
                     >
                       ĐĂNG KÝ
-                    </button>
+                    </button> */}
                   </div>
                 </div>
               </form>
@@ -665,7 +689,7 @@ function Contents(props) {
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 }
 
