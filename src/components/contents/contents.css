@@ -6,9 +6,23 @@
     height: 100%;
     background-color: rgba(255, 255, 255, 0.8);
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
+    gap: 1.5rem;
     z-index: 9999;
+}
+
+.cover_logo_loading {
+    max-width: 6rem;
+    max-height: 6rem;
+}
+
+.logo_loading {
+    display: block;
+    max-width: 6rem;
+    max-height: 6rem;
+    border-radius: 15%;
 }
 
 .input_error {
@@ -71,6 +85,20 @@
     width: fit-content;
     height: fit-content;
     cursor: pointer;
+}
+
+.cover_logo_result {
+    position: absolute;
+    top: 0.5rem;
+    left: 0.5rem;
+    width: 3rem;
+    height: 3rem;
+}
+
+.logo_result {
+    width: 3rem;
+    height: 3rem;
+    border-radius: 15%;
 }
 
 .result_title {

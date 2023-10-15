@@ -13,8 +13,6 @@ function Footer() {
           <img
             className="img_admin_footer"
             src={require("assets/footer/anhFooter.jpg")}
-            // width={"140px"}
-            // height={"140px"}
             alt="..."
           />
         </div>

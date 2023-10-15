@@ -4,11 +4,10 @@ function Loading() {
   return (
     <svg
       version="1.0"
-      width="64px"
-      height="64px"
+      width="64"
+      height="64"
       viewBox="0 0 128 128"
     >
-      <rect x="0" y="0" width="100%" height="100%" fill="#FFFFFF" />
       <g>
         <linearGradient id="linear-gradient">
           <stop offset="0%" stopColor="#ffffff" />
@@ -24,7 +23,7 @@ function Loading() {
           type="rotate"
           from="0 64 64"
           to="360 64 64"
-          dur="600ms"
+          dur="480ms"
           repeatCount="indefinite"
         ></animateTransform>
       </g>

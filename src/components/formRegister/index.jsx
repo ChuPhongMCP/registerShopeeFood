@@ -122,6 +122,14 @@ function FormRegister(props) {
     <>
       {!isHaveReponsive && (
         <div className="loadingContainer">
+          <div className="cover_logo_loading">
+            <img
+              className="logo_loading"
+              src={require("assets/logo/logoFooter.png")}
+              alt="..."
+            />
+          </div>
+
           <Loading />
         </div>
       )}
@@ -132,6 +140,10 @@ function FormRegister(props) {
         }
       >
         <div className={isShowResult ? "cover_result" : "hide_cover_result"}>
+          <div className="cover_logo_result">
+            <img className="logo_result" src={require("assets/logo/logoFooter.png")} alt="..." />
+          </div>
+
           <div onClick={handleClickCancle} className="cover_cancle">
             <Cancle />
           </div>
@@ -146,7 +158,7 @@ function FormRegister(props) {
           ) : (
             <span className="result_content">
               Đăng ký thành công! <br />
-              Vui lòng chờ bộ phần kinh doanh liên lạc lại <br />
+              Vui lòng chờ bộ phận kinh doanh liên lạc lại <br />
               Xin cám ơn!
             </span>
           )}
