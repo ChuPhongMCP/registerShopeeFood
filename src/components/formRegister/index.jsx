@@ -162,6 +162,8 @@ function FormRegister(props) {
               Xin cám ơn!
             </span>
           )}
+
+          <button onClick={handleClickCancle} className="btn btn-danger btn_confirm_result">Đồng Ý</button>
         </div>
       </div>
 

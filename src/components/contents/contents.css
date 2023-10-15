@@ -111,6 +111,18 @@
 .result_content {
     color: black;
     font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.btn_confirm_result {
+    border-radius: 0.4rem;
+    width: fit-content;
+    height: fit-content;
+    padding: 1rem 2rem;
+    background-color: #ee4d2d;
+    font-size: 1rem;
+    font-weight: bold;
+    text-transform: uppercase;
 }
 
 .cover_content {
