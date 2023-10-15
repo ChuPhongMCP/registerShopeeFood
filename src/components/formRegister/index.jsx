@@ -14,14 +14,14 @@ function FormRegister(props) {
 
   const [isShowResult, setIsShowResult] = useState(false);
 
-  const [isValidated, setIsValidated] = useState(false);
+  const [isValidated, setIsValidated] = useState(true);
 
   const [isHaveError, setIsHaveError] = useState(false);
 
   const form = useRef();
 
-  const sendEmail = async (e) => {
-    e.preventDefault();
+  const sendEmail = async () => {
+    // e.preventDefault();
 
     if (!isValidated) {
       return (
