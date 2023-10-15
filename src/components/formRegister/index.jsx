@@ -14,19 +14,15 @@ function FormRegister(props) {
 
   const [isShowResult, setIsShowResult] = useState(false);
 
-  const [isValidated, setIsValidated] = useState(true);
+  const [isValidated, setIsValidated] = useState(false);
 
   const [isHaveError, setIsHaveError] = useState(false);
 
   const form = useRef();
 
   const sendEmail = async () => {
-    // e.preventDefault();
-
     if (!isValidated) {
-      return (
-        alert("Bạn chưa xác thực reCAPTCHA")
-      );
+      return alert("Bạn chưa xác thực reCAPTCHA");
     }
 
     setIsHaveReponsive(false);
@@ -106,8 +102,20 @@ function FormRegister(props) {
     }
   }
 
+  const handleKeyPress = useCallback(
+    (e) => {
+      if (isShowResult || !isHaveReponsive) {
+        if (e.key === "Enter") {
+          e.preventDefault();
+        }
+      }
+    },
+    [isHaveReponsive, isShowResult]
+  );
+
   const handleClickCancle = useCallback(() => {
     setIsShowResult(false);
+    window.location.reload();
   }, []);
 
   return (
@@ -167,7 +175,7 @@ function FormRegister(props) {
         <div className="col-12 col-sm-12 col-md-12 col-lg-4 col-xl-4"></div>
 
         <div className="col-12 col-sm-12 col-md-12 col-lg-4 col-xl-4">
-          <div className="cover_form">
+          <div className="cover_form" onKeyDown={handleKeyPress}>
             <form ref={form} onSubmit={onClickButtonSubmit}>
               <div className="row">
                 <div className="mb-3 input_div">
