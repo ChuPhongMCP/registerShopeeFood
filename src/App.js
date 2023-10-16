@@ -33,27 +33,6 @@ function App() {
     <div className='App'>
       <IconPhone phoneNumber={defaultPhoneNumber} />
       <Routes>
-        {/* {
-          routers.map((r, idx) => {
-            if (r.children && r.children.length > 0) {
-              return (
-                <Route path={r.path} element={r.element} key={idx}>
-                  {
-                    r.children.map((rc, idxc) => {
-                      if (rc.isRoot) {
-                        return <Route index element={rc.element} key={idxc} />
-                      }
-
-                      return <Route path={rc.path} element={rc.element} key={idxc} />
-                    })
-                  }
-                </Route>
-              )
-            }
-
-            return <Route path={r.path} element={r.element} key={idx} />
-          })
-        } */}
         {renderRoutes(routers)}
       </Routes>
     </div>
